@@ -27,11 +27,10 @@ dependencies {
 ### How to use it?
 
 ```
-public void detectMimeType(File file)
+public String detectMimeType(File file)
 {
     //get mime type with tika
-    String mimeType=new AutoDetectParser()
-        .getDetector()
+    String mimeType=new AutoDetectParser().getDetector()
         .detect(new FileInputStream(file), new Metadata())
         .toString();
 
