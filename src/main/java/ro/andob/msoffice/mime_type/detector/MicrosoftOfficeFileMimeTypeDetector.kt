@@ -12,7 +12,7 @@ import java.util.zip.ZipInputStream
 object MicrosoftOfficeFileMimeTypeDetector
 {
     @JvmStatic
-    fun getMimeType(file : File) : String
+    fun getMimeType(file : File) : String?
     {
         try
         {
@@ -27,7 +27,7 @@ object MicrosoftOfficeFileMimeTypeDetector
             ex.printStackTrace()
         }
 
-        return MimeTypes.APPLICATION_OFFICE_GENERIC
+        return null
     }
 
     @Throws(Exception::class)

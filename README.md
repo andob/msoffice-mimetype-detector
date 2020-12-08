@@ -20,25 +20,25 @@ repositories {
 
 ```
 dependencies {
-    implementation 'ro.andob.msoffice:mime-type-detector:1.0.1'
+    implementation 'ro.andob.msoffice:mime-type-detector:1.0.2'
 }
 ```
 
 ### How to use it?
 
 ```
-public void detectMimeType(File file)
+public String detectMimeType(File file)
 {
-    //get mime type with tika
-    String mimeType=new AutoDetectParser()
-        .getDetector()
-        .detect(new FileInputStream(file), new Metadata())
-        .toString();
+    //detect msoffice mime type
+    String mimeType = MicrosoftOfficeFileMimeTypeDetector.getMimeType(file);
 
-    //if it is the generic tika msoffice mime type
-    //use this library to detect the proper mime type
-    if (mimeType==MimeTypes.APPLICATION_OFFICE_GENERIC)
-        return MicrosoftOfficeFileMimeTypeDetector.getMimeType(file);
+    if (mimeType==null)
+    {
+        //not a msoffice document, get mime type with tika
+        mimeType = new AutoDetectParser().getDetector()
+            .detect(new FileInputStream(file), new Metadata())
+            .toString();
+    }
 
     return mimeType;
 }
