@@ -38,13 +38,13 @@ object MicrosoftOfficeFileMimeTypeDetector
             var fileInsideZip=zipInputStream.nextEntry
             while (fileInsideZip!=null)
             {
-                if (fileInsideZip.name.toLowerCase()=="word")
+                if (fileInsideZip.name.toLowerCase().startsWith("word/"))
                     return MimeTypes.APPLICATION_OFFICE_WORD //DOCX
 
-                if (fileInsideZip.name.toLowerCase()=="xl")
+                if (fileInsideZip.name.toLowerCase().startsWith("xl/"))
                     return MimeTypes.APPLICATION_OFFICE_EXCEL //XLSX
 
-                if (fileInsideZip.name.toLowerCase()=="ppt")
+                if (fileInsideZip.name.toLowerCase().startsWith("ppt/"))
                     return MimeTypes.APPLICATION_OFFICE_POWER_POINT //PPTX
 
                 fileInsideZip=zipInputStream.nextEntry

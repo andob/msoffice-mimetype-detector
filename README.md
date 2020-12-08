@@ -20,7 +20,7 @@ repositories {
 
 ```
 dependencies {
-    implementation 'ro.andob.msoffice:mime-type-detector:1.0.2'
+    implementation 'ro.andob.msoffice:mime-type-detector:1.0.3'
 }
 ```
 
