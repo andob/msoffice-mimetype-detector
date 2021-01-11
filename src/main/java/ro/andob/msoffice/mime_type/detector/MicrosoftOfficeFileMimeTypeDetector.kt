@@ -84,8 +84,8 @@ object MicrosoftOfficeFileMimeTypeDetector
             if (guid=="0002081000000000C000000000000046"||guid=="0002082000000000C000000000000046")
                 return MimeTypes.APPLICATION_OFFICE_EXCEL_LEGACY //XLS
 
-            if (guid=="64818d104F9B11CF86EA00AA00B929E8")
-                return MimeTypes.APPLICATION_OFFICE_POWER_POINT_LEGACY //DOC
+            if (guid=="64818D104F9B11CF86EA00AA00B929E8")
+                return MimeTypes.APPLICATION_OFFICE_POWER_POINT_LEGACY //PPT
         }
 
         throw RuntimeException("Cannot detect file type!")
@@ -139,7 +139,7 @@ object MicrosoftOfficeFileMimeTypeDetector
         FileInputStream(this).use { inputStream ->
             val firstBytes=ByteArray(magicBytesHexString.length/2)
             inputStream.read(firstBytes, 0, firstBytes.size)
-            val fileMagicBytesHexString=HashUtils.hexString(firstBytes).toUpperCase()
+            val fileMagicBytesHexString=ByteArrayEncoder(firstBytes).toHexString()
             return fileMagicBytesHexString==magicBytesHexString
         }
     }

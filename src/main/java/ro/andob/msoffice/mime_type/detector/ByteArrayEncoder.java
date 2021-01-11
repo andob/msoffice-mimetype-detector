@@ -1,8 +1,15 @@
 package ro.andob.msoffice.mime_type.detector;
 
-public class HashUtils
+public class ByteArrayEncoder
 {
-    public static String hexString(byte[] bytes)
+    private final byte[] bytes;
+
+    public ByteArrayEncoder(byte[] bytes)
+    {
+        this.bytes=bytes;
+    }
+
+    public String toHexString()
     {
         StringBuilder hexString=new StringBuilder();
         for (byte aMessageDigest : bytes)
@@ -13,6 +20,6 @@ public class HashUtils
             hexString.append(h);
         }
 
-        return hexString.toString();
+        return hexString.toString().toUpperCase();
     }
 }
