@@ -125,7 +125,7 @@ object MicrosoftOfficeFileMimeTypeDetector
             .putShort(source.short) //third component: 16-bit little endian integer (WORD)
             .order(ByteOrder.BIG_ENDIAN)
             .putLong(source.long) //forth component: 64-bit big endian integer (BYTE[8])
-        target.rewind()
+        target.flip()
 
         return UUID(target.long, target.long).toString()
                 .replace("-", "").toUpperCase()
