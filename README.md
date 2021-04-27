@@ -14,7 +14,7 @@ It is based on [this](https://stackoverflow.com/a/48318648) stack overflow answe
 
 ```
 repositories {
-    maven { url "http://maven.andob.info/repository/open_source" }
+    maven { url "https://maven.andob.info/repository/open_source" }
 }
 ```
 
